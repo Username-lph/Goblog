@@ -1,0 +1,367 @@
+/*样式*/
+* {
+    margin: 0;
+    padding: 0; //  position:relative;
+    list-style: none;
+    box-sizing: border-box;
+}
+@mixin float {
+    content: "";
+    display: block;
+    clear: both;
+}
+a {
+    text-decoration: none;
+}
+body {
+    background: #fff;
+    color: #383838;
+    font-family: "微软雅黑";
+    font-size: 16px;
+}
+@mixin whb($width, $height, $background) {
+    width: $width;
+    height: $height;
+    background: $background;
+}
+@mixin center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+#wzq {
+    @include center;
+    @include whb(100%,636px,url("../images/bg_01.png"));
+    background-size: 1356px 636px;
+    background-repeat: no-repeat;
+}
+/*开始界面场景*/
+#Star {
+    @include whb(1004px,636px,url(../images/bg.jpg));
+    background: transparent;
+    @include center;
+    &:after {
+        @include float;
+    }
+}
+#gk {
+    @include whb(500px,636px,transparent);
+    background-size: cover;
+    @include center;
+    ul {
+        @include whb(200px,auto,transparent);
+        margin: 100px auto 0;
+        &:after {
+            @include float;
+        }
+        li {
+            @include whb(auto,auto,transparent);
+            text-align: center;
+            white-space: nowrap;
+            letter-spacing: 5px;
+            padding: 10px;
+            margin: 10px auto;
+            color: #383838;
+            font-size: 18px;
+            font-weight: 400;
+            transition: transform 1s ease 0s;
+            transform: scale(1);
+            cursor: pointer;
+        }
+    }
+}
+#Star .active {
+    color: #fff;
+    transform: scale(1.2);
+    border-radius: 10px;
+    background: #9A4D06;
+}
+h1 {
+    @include whb(166px,55px,transparent);
+    padding: 5px;
+    margin: 33px auto 66px;
+    text-align: center;
+    border-radius: 10px;
+    letter-spacing: 30px;
+    white-space: nowrap;
+    font-weight: 500;
+}
+/*star 和    back*/
+.star,
+.back,
+.btn,
+.restart {
+    @include whb(100px,auto,#9A4D06);
+    position: absolute;
+    bottom: 42px;
+    right: 69px;
+    padding: 0 25px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    a {
+        display: block;
+        white-space: nowrap;
+        letter-spacing: 1px;
+        color: #dfdfdf;
+        transform: scale(1);
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+/*Cj*/
+#Cj {
+    @include whb(266px,333px,#9A4D06);
+    @include center;
+    top: 8px;
+    color: #fff;
+    opacity: 0.88;
+    transition: transform 1s ease-in-out 0s;
+    transform: scale(0,0);
+    &.active {
+        transform: scale(1.2,1.2);
+    }
+    .cj {
+        @include whb(100px,auto,transparent);
+        margin: 30px auto 33px;
+        .dt {
+            @include whb(100px,auto,transparent);
+            padding: 10px;
+            margin: 5px auto;
+        }
+    }
+    .dd {
+        @include whb(266px,48px,transparent);
+        margin: 88px auto 33px;
+        overflow: hidden;
+        &:after {
+            @include float;
+        }
+        li {
+            float: left;
+            padding: 5px;
+            margin: 2px;
+            text-align: center;
+            line-height: 33px;
+            cursor: pointer;
+        }
+    }
+}
+/*Cj End*/
+/*Xk*/
+#Xk {
+    @include whb(266px,333px,#9A4D06);
+    opacity: 0.88;
+    @include center;
+    color: #fff;
+    top: 8px;
+    transition: transform 1s ease-in-out 0s;
+    transform: scale(0,0);
+    &.active {
+        transform: scale(1.2,1.2);
+    }
+    .ms {
+        padding: 10px;
+        margin: 30px auto 33px;
+        text-align: center;
+    }
+}
+form {
+    @include whb(75px,221px,transparent);
+    display: block;
+    padding: 10px;
+    margin: 5px auto;
+    input {
+        margin: 5px auto 20px;
+    }
+}
+/*Xk End*/
+/*下棋场景*/
+#Canvas {
+    width: 1004px;
+    height: 636px;
+    background: #CE8D3D;
+    background-image: url("../images/bg.jpg");
+    background: transparent;
+    background-size: cover;
+    @include center; //  display: none;
+    &:after {
+        @include float;
+    }
+    display: none;
+}
+#canvas,
+#canvas-z,
+#canvas-y {
+    float: left;
+}
+#audio {
+    float: left;
+}
+audio {
+    display: block;
+    z-index: 111;
+}
+canvas {
+    display: block;
+    border: 0 solid #000;
+}
+#canvas-z,
+#canvas-y {
+    background-image: url("../images/miaobiao.png");
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#play {
+    @include whb(600px,auto,transparent);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    margin: auto;
+    &:after {
+        @include float;
+    }
+    li {
+        @include whb(100px,auto,#D77B3F);
+        float: left;
+        padding: 5px 25px;
+        margin: 0 50px;
+        text-align: right;
+        line-height: 20px;
+        border-radius: 12px;
+        a {
+            display: block;
+            letter-spacing: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #dfdfdf;
+            transform: scale(1);
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+/*查看棋谱*/
+#check {
+    @include whb(600px,600px,#fff);
+    transition: transform 1s ease-in-out 0s;
+    transform: scale(0,0);
+    z-index: 999;
+    @include center;
+    box-shadow: 0 0 0 1000px rgba(0,0,0,0.5);
+    &.active {
+        transform: scale(1,1);
+    }
+    #close {
+        @include whb(30px,30px,transparent);
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        border-radius: 50%;
+        transform: rotate(45deg);
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    img {
+        width: 100%;
+    }
+    a {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 101;
+    }
+}
+#Canvas .btn {
+    width: 115px;
+    left: 10px;
+    line-height: 39px;
+    color: #fff;
+}
+#Canvas .restart {
+    width: 115px;
+    left: 10px;
+    bottom: 86px;
+    line-height: 39px;
+    color: #fff;
+}
+/*输赢*/
+#info {
+    @include whb(300px,300px,#9A4D06);
+    @include center;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+    /* 针对 IE8 以及更早的版本 */
+    transition: transform 1s ease-in-out 0s;
+    -webkit-transform: translate3d(0,-1000px,0);
+    transform: translate3d(0,-1000px,0);
+    &:after {
+        @include float;
+    }
+    &.active {
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    span {
+        display: block;
+        text-align: center;
+        padding: 5px;
+        margin: 28px auto 30px;
+        white-space: nowrap;
+        letter-spacing: 5px;
+        font-size: 32px; //      color:#382704;
+    }
+    .button {
+        @include whb(90px,30px,#9A4D06);
+        float: left;
+        padding: 10px;
+        margin: 36px 30px;
+        text-align: center;
+        line-height: 10px;
+        color: #fff;
+        white-space: nowrap;
+        letter-spacing: 3px;
+        transform: scale(1);
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+/*悔棋*/
+.huiqi,.yihe,.renshu{
+    @include whb(300px,100px,#9A4D06);
+    opacity:0.88;
+    filter:alpha(opacity=88);
+    @include center;
+    z-index:111;
+    transition:transform 0.5s ease-in-out 0s;
+    -webkit-transform:translate3d(0,-1000px,0);
+    transform:translate3d(0,-1000px,0);
+    &.active{
+        -webkit-transform:translate3d(0,0,0);
+        transform:translate3d(0,0,0)
+    }
+    text-align:center;
+    line-height:100px;
+    a{
+        color:#fff;
+    }
+    input{
+       border:none;
+    }
+}
